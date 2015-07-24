@@ -6,6 +6,10 @@
 # 2. get the value of the matrix
 # 3. set the value of inverse of the matrix
 # 4. get the value of inverse of the matrix
+
+# The operators <<- and ->> are normally only used in functions, and cause a search to made through parent environments
+# for an existing definition of the variable being assigned. If such a variable is found (and its binding is not locked) # then its value is redefined, otherwise assignment takes place in the global environment.
+
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y) {
@@ -28,6 +32,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Return a matrix that is the inverse of 'x'
 # This function assumes that the matrix is always invertible.
+# Use the generic function solve for the equation ax = b for x, where b can be either a vector or a matrix.
+
 cacheSolve <- function(x, ...) {
   inv <- x$getinverse()
   if(!is.null(inv)) {
